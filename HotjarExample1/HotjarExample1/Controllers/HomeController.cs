@@ -33,5 +33,13 @@ namespace HotjarExample1.Controllers
 
             return View();
         }
+
+
+        public ActionResult TestMethod()
+        {
+            ViewBag.Message = "Test Method.";
+
+            return View();
+        }
     }
 }
