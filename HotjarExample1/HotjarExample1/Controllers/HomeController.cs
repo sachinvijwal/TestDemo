@@ -33,12 +33,5 @@ namespace HotjarExample1.Controllers
 
             return View();
         }
-
-        public ActionResult Contact1()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
