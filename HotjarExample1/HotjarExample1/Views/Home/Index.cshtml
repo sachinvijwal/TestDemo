@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <div>
+
+            <b style="color:red;">data-hj-whitelist Class Added</b>
+            <br />
+            Date: <span class="date_span data-hj-whitelist" style="color:red;font-weight:bold;">@DateTime.Now.ToShortDateString()</span><br />
+            Time: <span class="time_span data-hj-whitelist" style="color:red;font-weight:bold;">----------------</span><br />
+            <br />
+            First Name : <input type="text" name="FirstName" value="" class="data-hj-whitelist" /><br />
+            Last Name : <input type="text" name="LastName" value="" class="data-hj-whitelist" /><br />
+            <br />
+            <hr />
+            <br />
+            Date: <span class="date_span" style="color:red;font-weight:bold;" data-hj-whitelist>@DateTime.Now.ToShortDateString()</span><br />
+            Time: <span class="time_span" style="color:red;font-weight:bold;" data-hj-whitelist>----------------</span><br />
+            <br />
+            <b style="color:red;">data-hj-whitelist Attribute Added</b>
+            <br />
+            Age : <input type="text" name="Age" value="" data-hj-whitelist />
+            <br />
+            Salary : <input type="text" name="Salary" value="" data-hj-whitelist /><br />
+            <input type="submit" name="submit" value="submit" />
+
+            <hr />
+            <div class="dv-default">
+                <br />
+                <b style="color:red;">data-hj-whitelist Class Added</b>
+                <br />
+                <input class="data-hj-whitelist" type="text" name="default" value="" />
+                <input class="data-hj-whitelist" type="text" name="default" value="" />
+                <input class="data-hj-whitelist" type="text" name="default" value="" />
+                <br />
+                <b style="color:red;">data-hj-whitelist Attribute Added</b>
+                <br />
+                <input type="text" name="default" value="" data-hj-whitelist />
+                <input type="text" name="default" value="" data-hj-whitelist />
+                <input type="text" name="default" value="" data-hj-whitelist />
+                <input id="btnDefaultValue" type="button" name="name" value="Default Value" />
+            </div>
+        </div>
+    }
+</div>
+<script src="https://code.jquery.com/jquery-3.4.0.js"
+        integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+        crossorigin="anonymous"></script>
+<script>
+    function updateTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        var t_str = hours + ":" + minutes + ":" + seconds;
+        if (hours > 11) {
+            t_str += " PM";
+        } else {
+            t_str += " AM";
+        }
+        $('.time_span').text(t_str);
+    }
+    setInterval(updateTime, 1000);
+
+    $(document).ready(function () {
+        $("#btnDefaultValue").click(function () {
+            $(".dv-default").find("input[name=default]").each(function (i, ele) {
+                var temp = Math.floor(Math.random() * 15724);
+                $(ele).val("Default-" + temp);
+                $(ele).trigger("blur");
+                $(ele).trigger("change");
+                $(ele).trigger("keyup");
+                $(ele).trigger("keypress");
+                $(ele).trigger("click");
+            });
+        });
+    });
+</script>

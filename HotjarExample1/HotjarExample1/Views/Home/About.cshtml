@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<input id="txtName" type="text" name="Name" value="111222333"  />
+<input id="btnClickHere" type="button" name="button" value="Click Here!!!" />
+
+<script src="https://code.jquery.com/jquery-3.4.0.js"
+        integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnClickHere").click(function () {
+            //var temp = Math.floor(Math.random() * 15724);
+            //$("#txtName").val("Default-" + temp);
+            //$("#txtName").trigger("blur");
+            //$("#txtName").trigger("change");
+            //$("#txtName").trigger("keyup");
+            //$("#txtName").trigger("keypress");
+            //$("#txtName").trigger("click");
+
+
+            var elem = $('#txtName')
+
+            // Save current value of element
+            elem.attr('oldVal', elem.val());
+
+            //Look for changes in the value
+            elem.bind("propertychange change click keyup input paste", function (event) {
+                // If value has changed...
+                if (elem.data('oldVal') != elem.val()) {
+                    // Updated stored value
+                    elem.data('oldVal', elem.val());
+                }
+            });
+
+            var temp = Math.floor(Math.random() * 15724);
+            $("#txtName").val("Default-" + temp);
+
+
+        });
+
+        //$("#txtName").blur(function () {
+        //    console.log("blur");
+        //});
+        //$("#txtName").change(function () {
+        //    console.log("change");
+        //});
+        //$("#txtName").keyup(function () {
+        //    console.log("keyup");
+        //});
+        //$("#txtName").keypress(function () {
+        //    console.log("keypress");
+        //});
+        //$("#txtName").click(function () {
+        //    console.log("click");
+        //});
+
+    });
+</script>
