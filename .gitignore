@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/HotjarExample1/HotjarExample1/bin
+/HotjarExample1/HotjarExample1/obj/Debug
+/HotjarExample1/packages
+/HotjarExample1/.vs
+/.vs
